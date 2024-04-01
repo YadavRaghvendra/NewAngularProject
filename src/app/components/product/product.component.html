@@ -1,0 +1,35 @@
+
+<div class="container">
+  <button class="styled-button" (click)="goToaddproduct()">Go to AddProduct List</button>
+  <div class="pagination">
+    <button class="prev-btn" [disabled]="currentPage === 1" (click)="prevPage()">Previous</button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button class="next-btn" [disabled]="this.totalItems<10" (click)="nextPage()">Next</button>
+  </div>
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>ProductID</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Action</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.productId }}</td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productDescription }}</td>
+        <td>{{ product.productStock }}</td>
+        <td>{{ product.productPrice }}</td>
+        <td>
+          <button class="edit-btn" (click)="editProduct(product)">Edit</button>
+          <button class="delete-btn" (click)="deleteProduct(product.productId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
